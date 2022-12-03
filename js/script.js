@@ -210,4 +210,49 @@ window.addEventListener('DOMContentLoaded', () => {
     '.menu .container',
     'menu__item'
   ).render();
+
+  //Forms
+  const forms = document.querySelectorAll('form');
+  const message = {
+    loading: 'Loading...',
+    success: 'Thanks! We will contact you soon =)',
+    failure: 'Fatal Error',
+  };
+
+  forms.forEach((item) => {
+    postData(item);
+  });
+
+  function postData(form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const statusMessage = document.createElement('div');
+      statusMessage.classList.add('status');
+      statusMessage.innerHTML = message.loading;
+      form.appendChild(statusMessage);
+
+      const request = new XMLHttpRequest();
+      request.open('POST', 'server.php');
+
+      // request.setRequestHeader('Content-Type', 'multipart/form-data');
+      const formData = new FormData(form);
+      //always need name in form!
+
+      request.send(formData);
+
+      request.addEventListener('load', () => {
+        if (request.status === 200) {
+          console.log(request.response);
+          statusMessage.innerHTML = message.success;
+          form.reset();
+          setTimeout(() => {
+            statusMessage.remove();
+          }, 3000);
+        } else {
+          statusMessage.innerHTML = message.failure;
+        }
+      });
+    });
+  }
 });
