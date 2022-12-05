@@ -236,10 +236,19 @@ window.addEventListener('DOMContentLoaded', () => {
       request.open('POST', 'server.php');
 
       // request.setRequestHeader('Content-Type', 'multipart/form-data');
+      request.setRequestHeader('Content-type', 'application/json');
       const formData = new FormData(form);
       //always need name in form!
 
-      request.send(formData);
+      const object = {};
+      formData.forEach(function (value, key) {
+        object.key = value;
+      });
+
+      const json = JSON.stringify(object);
+
+      // request.send(formData);
+      request.send(json);
 
       request.addEventListener('load', () => {
         if (request.status === 200) {
@@ -254,5 +263,19 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       });
     });
+  }
+  function showThanksModal() {
+    const prevModalDialog = document.querySelector('.modal_dialog');
+
+    prevModalDialog.classList.add('hide');
+    openModal();
+
+    const thanksModal = document.createElement('div');
+    thanksModal.classList.add('modal_dialog');
+    thanksModal.innerHTML = `
+    <div  class= "modal_content"> 
+ <div class ="modal__close">&times;</div>
+    </div>
+    `;
   }
 });
