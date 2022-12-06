@@ -204,17 +204,21 @@ window.addEventListener('DOMContentLoaded', () => {
       `;
 
             form.insertAdjacentElement('afterend', statusMessage);
+            
             const formData = new FormData(form);
-            // const object = {};
-            // formData.forEach(function (value, key) {
-            //   object[key] = value;
-            // });
+            
+            const object = {};
+            formData.forEach(function (value, key) {
+                object[key] = value;
+            });
 
-            // const json = JSON.stringify(object);
+            //fetch
             fetch('server.php', {
-                method: 'POST', // headers: { 'Content-Type': 'application/json' },
-                body: formData,
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(object),
             })
+                .then(data => data.text())
                 .then((data) => {
                     console.log(data);
                     showThanksModal(message.success);
@@ -228,6 +232,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+    console.log('hello rider')
 
     function showThanksModal(message) {
         const prevModalDialog = document.querySelector('.modal__dialog');
