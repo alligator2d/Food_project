@@ -1,0 +1,23 @@
+{
+  "name": "food_dist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alligator2d/Food_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alligator2d/Food_project/issues"
+  },
+  "homepage": "https://github.com/alligator2d/Food_project#readme",
+  "devDependencies": {
+    "json-server": "^0.17.1",
+    "webpack-cli": "^5.0.1"
+  }
+}
