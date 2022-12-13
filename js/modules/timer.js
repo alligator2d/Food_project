@@ -1,8 +1,5 @@
-function timer () {
-
+function timer (id, deadLine) {
 //timer
-    const deadLine = '2023-1-1';
-
     function getTimeRemaining(endTime) {
         let days, hours, minutes, seconds;
         const t = Date.parse(endTime) - new Date();
@@ -40,7 +37,7 @@ function timer () {
         }
     }
 
-    setClock('.timer', deadLine);
+    setClock(id, deadLine);
 
     function getZero(num) {
         if (num >= 0 && num < 10) {

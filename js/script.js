@@ -10,15 +10,19 @@ import {openModal} from './modules/modal';
 window.addEventListener('DOMContentLoaded', function () {
 
     const modalTimerId = setTimeout(() => openModal('.modal', modalTimerId),
-    50000)
+        50000)
     ;
-    
-
-    tabs();
+    tabs('.tabheader__item', '.tabcontent', '.tabheader__items', 'tabheader__item_active');
     calc();
     cards();
-    forms('form',modalTimerId);
+    forms('form', modalTimerId);
     modal('[data-modal]', '.modal', modalTimerId);
-    slider();
-    timer();
+    slider({
+            slide: '.offer__slide',
+            nextArrow: '.offer__slider-next',
+            prevArrow: '.offer__slider-prev',
+            currentCounter: '#current',
+        }
+    );
+    timer('.timer', '2023-1-1');
 });

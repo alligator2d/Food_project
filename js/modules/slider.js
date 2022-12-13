@@ -1,10 +1,10 @@
-function slider () {
+function slider ({slide, nextArrow, prevArrow, currentCounter}) {
     //slider
 
-    const images = document.querySelectorAll('.offer__slide');
-    const next = document.querySelector('.offer__slider-next');
-    const prev = document.querySelector('.offer__slider-prev');
-    let currentId = document.querySelector('#current');
+    const images = document.querySelectorAll(slide);
+    const next = document.querySelector(nextArrow);
+    const prev = document.querySelector(prevArrow);
+    let currentId = document.querySelector(currentCounter);
     let count = 0;
 
     next.addEventListener('click', nextImg);
